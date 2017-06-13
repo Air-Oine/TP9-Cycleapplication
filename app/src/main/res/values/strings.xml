@@ -2,4 +2,6 @@
     <string name="app_name">TP9-Cycle application</string>
     <string name="go_page_2">Go page 2</string>
     <string name="go_to_page_1">Go to page 1</string>
+    <string name="texte_sauvegarde">Texte sauvegardé</string>
+    <string name="incrementer">Incrémenter</string>
 </resources>
