@@ -1,10 +1,7 @@
 package com.example.admin.tp9_cycleapplication;
 
 import android.content.Intent;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -14,11 +11,35 @@ public class MainActivity extends Traceur {
 
     public static final String TEXTE = "texte";
     public static final String TEXTE_PARCELABLE = "texte_parcelable";
+    public static final String TP_9 = "TP9";
+    public static final String PROGRESS_BAR = "progress_bar";
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Get shared préférences
+        sharedPreferences = getSharedPreferences(TP_9, MODE_PRIVATE);
+        int progress = sharedPreferences.getInt(PROGRESS_BAR, 0);
+
+        ProgressBar progressBarShared = (ProgressBar) findViewById(R.id.progressBarShared);
+        progressBarShared.setProgress(progress);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        //Set shared préférences
+        ProgressBar progressBarShared = (ProgressBar) findViewById(R.id.progressBarShared);
+
+        sharedPreferences = getSharedPreferences(TP_9, MODE_PRIVATE);
+        sharedPreferences.edit()
+                .putInt(PROGRESS_BAR, progressBarShared.getProgress())
+                .commit();
     }
 
     @Override
@@ -61,12 +82,21 @@ public class MainActivity extends Traceur {
      * @param view
      */
     public void incrementer(View view) {
+        //Progress bar horizontale
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         int progressCourant = progressBar.getProgress();
         if(progressCourant == 100) {
             progressCourant = 0;
         }
         progressBar.setProgress(progressCourant+10);
+
+        //Progress bar 2
+        ProgressBar progressBarShared = (ProgressBar) findViewById(R.id.progressBarShared);
+        int progressCourant2 = progressBarShared.getProgress();
+        if(progressCourant2 == 100) {
+            progressCourant2 = 0;
+        }
+        progressBarShared.setProgress(progressCourant2+2);
     }
 
 }
