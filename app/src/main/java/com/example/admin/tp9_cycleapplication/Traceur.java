@@ -1,9 +1,15 @@
 package com.example.admin.tp9_cycleapplication;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.drm.DrmStore;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import java.util.TimerTask;
 
 /**
  * Created by Air-Oine on 13/06/2017.
@@ -74,6 +80,20 @@ public abstract class Traceur extends AppCompatActivity {
     }
 
     private void showState(String state) {
+        //Toast
         Toast.makeText(this, "On " + state, Toast.LENGTH_SHORT).show();
+
+        //Notification
+        final Notification notification = new Notification.Builder(this)
+                .setContentTitle(state)
+                .setAutoCancel(true)
+                .setContentText(this.getLocalClassName())
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .build();
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify((int) System.currentTimeMillis(), notification);
+
+
     }
 }
