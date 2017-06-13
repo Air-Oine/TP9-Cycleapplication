@@ -5,16 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends Traceur {
+public class SecondActivity extends Traceur {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_second);
     }
 
-    public void gotoPage2(View view) {
-        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+    public void gotoPage1(View view) {
+        Intent intent = new Intent(SecondActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.admin.tp9_cycleapplication.MainActivity">
+    tools:context="com.example.admin.tp9_cycleapplication.SecondActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/go_page_2"
-        android:onClick="gotoPage2"/>
-
+        android:text="@string/go_to_page_1"
+        android:onClick="gotoPage1"/>
 </RelativeLayout>
